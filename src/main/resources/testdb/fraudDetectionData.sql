@@ -1,0 +1,1 @@
+-- populate with sale validation default rules
