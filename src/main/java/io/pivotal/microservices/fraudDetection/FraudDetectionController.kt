@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class FraudDetectionController constructor (val saleValidator : SaleValidator) {
 
-    @PostMapping
+    @PostMapping("/validate")
     fun validate(@RequestBody sale : SaleDTO) : Boolean = saleValidator.validate(sale)
+
+    @PostMapping("/score")
+    fun score(@RequestBody sale : SaleDTO) : Int = saleValidator.score(sale)
 }
