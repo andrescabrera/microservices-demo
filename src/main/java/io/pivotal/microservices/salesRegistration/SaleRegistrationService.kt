@@ -1,13 +1,14 @@
-package io.pivotal.microservices.saleRegistration
+package io.pivotal.microservices.salesRegistration
 
 import io.pivotal.microservices.services.web.WebAccountsService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cloud.client.loadbalancer.LoadBalanced
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import java.util.logging.Logger
 
 @Service
-class SaleRegistrationService constructor(@LoadBalanced var restTemplate: RestTemplate, var serviceUrl: String) {
+class SaleRegistrationService(var restTemplate: RestTemplate, var serviceUrl: String) {
 
     init {
         this.serviceUrl = if (serviceUrl.startsWith("http"))

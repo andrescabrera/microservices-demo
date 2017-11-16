@@ -48,14 +48,9 @@ public class WebSalesRegistrationService {
 				+ restTemplate.getRequestFactory().getClass());
 	}
 
-	public SaleDTO findByNumber(String saleNumber) {
-		logger.info("findByNumber() invoked: for " + saleNumber);
+	public SaleDTO findByNumber(String saleNumber) throws SaleNotFoundException {
+        logger.info("findByNumber() invoked: for " + saleNumber);
 
-		return restTemplate.getForObject(serviceUrl + "/sales/{number}",
-				SaleDTO.class, saleNumber);
-	}
-
-	public SaleDTO getByNumber(String saleNumber) throws SaleNotFoundException {
 		SaleDTO sale = restTemplate.getForObject(serviceUrl
 				+ "/sales/{number}", SaleDTO.class, saleNumber);
 

@@ -1,15 +1,13 @@
 package io.pivotal.microservices.services.web;
 
+import io.pivotal.microservices.exceptions.SaleNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
@@ -44,7 +42,7 @@ public class WebSaleRegistrationController {
 
 	@RequestMapping("/sales/{saleNumber}")
 	public String byNumber(Model model,
-			@PathVariable("saleNumber") String saleNumber) {
+			@PathVariable("saleNumber") String saleNumber) throws SaleNotFoundException {
 
 		logger.info("web-service byNumber() invoked: " + saleNumber);
 
@@ -54,13 +52,19 @@ public class WebSaleRegistrationController {
 		return "sale";
 	}
 
-    @RequestMapping(value = "/sales/register")
-    public String register(Model model, SaleDTO sale) {
+    @RequestMapping(value = "/sales/doregister")
+    public String doRegister(Model model, SaleDTO sale) {
         logger.info("web-service search() invoked: " + sale);
 
         SaleDTO saleResult = saleRegistrationService.register(sale);
-        logger.info("web-service byNumber() found: " + sale);
+        logger.info("web-service register(): " + sale);
         model.addAttribute("sale", saleResult);
         return "sale";
+    }
+
+    @RequestMapping(value = "/sales/register", method = RequestMethod.GET)
+    public String saleRegistrationForm(Model model) {
+        model.addAttribute("sale", new SaleDTO());
+        return "salesRegistration";
     }
 }

@@ -1,7 +1,6 @@
-package io.pivotal.microservices.saleRegistration
+package io.pivotal.microservices.salesRegistration
 
 import io.pivotal.microservices.accounts.Account
-import io.pivotal.microservices.fraudDetection.SaleValidator
 import java.util.*
 import javax.money.MonetaryAmount
 
@@ -18,7 +17,7 @@ import javax.money.MonetaryAmount
     ● Importe de la compra
 
 */
-class Sale (val buyer: Account,
+data class Sale (val buyer: Account,
             val purchaseDate: Date,
             val passengers: List<String>,
             val cardHolder: String,
@@ -29,7 +28,4 @@ class Sale (val buyer: Account,
             val travelDates: List<Date>,
             val amount: MonetaryAmount,
             var number: UUID = UUID.randomUUID(),
-            var valid: Boolean = false) {
-
-    fun validate(saleValidator: SaleValidator) : Boolean = saleValidator.validate(this)
-}
+            var valid: Boolean = false)

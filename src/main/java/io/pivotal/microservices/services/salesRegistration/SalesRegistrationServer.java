@@ -1,10 +1,15 @@
 package io.pivotal.microservices.services.salesRegistration;
 
-import io.pivotal.microservices.saleRegistration.SaleRegistrationConfiguration;
+import io.pivotal.microservices.salesRegistration.SaleRegistrationConfiguration;
+import io.pivotal.microservices.salesRegistration.SaleRegistrationController;
+import io.pivotal.microservices.salesRegistration.SaleRegistrationService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.logging.Logger;
 
@@ -20,8 +25,6 @@ import java.util.logging.Logger;
 @EnableDiscoveryClient
 @Import(SaleRegistrationConfiguration.class)
 public class SalesRegistrationServer {
-
-	protected Logger logger = Logger.getLogger(SalesRegistrationServer.class.getName());
 
 	/**
 	 * Run the application using Spring Boot and an embedded servlet engine.

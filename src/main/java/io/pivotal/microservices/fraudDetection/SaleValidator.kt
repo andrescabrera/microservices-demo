@@ -1,7 +1,7 @@
 package io.pivotal.microservices.fraudDetection
 
-import io.pivotal.microservices.saleRegistration.Sale
+import io.pivotal.microservices.services.web.SaleDTO
 
 interface SaleValidator {
-    fun validate(sale: Sale): Boolean
+    fun validate(sale: SaleDTO): Boolean
 }

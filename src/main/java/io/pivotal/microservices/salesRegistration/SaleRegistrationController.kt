@@ -1,4 +1,4 @@
-package io.pivotal.microservices.saleRegistration
+package io.pivotal.microservices.salesRegistration
 
 import io.pivotal.microservices.accounts.Account
 import io.pivotal.microservices.services.web.SaleDTO
