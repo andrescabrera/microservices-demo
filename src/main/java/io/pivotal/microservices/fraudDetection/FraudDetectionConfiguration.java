@@ -1,8 +1,6 @@
 package io.pivotal.microservices.fraudDetection;
 
-import io.pivotal.microservices.fraudDetection.rules.CreditCardBlackListRule;
-import io.pivotal.microservices.fraudDetection.rules.DestinationBlackListRule;
-import io.pivotal.microservices.fraudDetection.rules.Rule;
+import io.pivotal.microservices.fraudDetection.rules.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -44,9 +42,37 @@ public class FraudDetectionConfiguration {
 		return new DestinationBlackListRule();
 	}
 
+    @Bean
+    public Rule travelDateBetweenNext24HoursRule() {
+        return new TravelDateBetweenNext24HoursRule();
+    }
+
+    @Bean
+    public Rule passengersSurnameRule() {
+        return new PassengersSurnameRule();
+    }
+
+    @Bean
+    public Rule creditCardHolderSurnameAgainstPassengersSurnamesRule() {
+        return new CreditCardHolderSurnameAgainstPassengersSurnamesRule();
+    }
+
+    @Bean
+    public Rule purchaseExceedAmount() {
+        return new PurchaseExceedAmount();
+    }
+
 	@Bean
 	public SaleValidator ruleSetValidator() {
-		return new RuleSetValidator(new HashSet<>(Arrays.asList(creditCardBlackListRule(), destinationBlackListRule())), 100);
+		return new RuleSetValidator(new HashSet<>(
+		        Arrays.asList(
+		            creditCardBlackListRule(),
+                    destinationBlackListRule(),
+                    travelDateBetweenNext24HoursRule(),
+                    passengersSurnameRule(),
+                    creditCardHolderSurnameAgainstPassengersSurnamesRule(),
+                    purchaseExceedAmount()
+                )), 100);
 	}
 
 	/**
