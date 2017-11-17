@@ -38,9 +38,9 @@ public class Main {
 			RegistrationServer.main(args);
 		} else if (serverName.equals("accounts")) {
 			AccountsServer.main(args);
-		} else if (serverName.equals("salesRegistration")) {
+		} else if (serverName.equals("sales-registration")) {
 			SalesRegistrationServer.main(args);
-		} else if (serverName.equals("fraudDetection")) {
+		} else if (serverName.equals("fraud-detection")) {
 			FraudDetectionServer.main(args);
 		} else if (serverName.equals("web")) {
 			WebServer.main(args);
