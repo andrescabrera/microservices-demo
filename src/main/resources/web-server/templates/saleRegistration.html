@@ -1,0 +1,62 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+	<h1>Travel Registration</h1>
+
+	<p>Enter a Travel to Register into system:</p>
+
+	<form action="#" th:object="${sale}" method="GET"
+		th:action="@{/sales/doregister}" class="form-horizontal">
+
+		<!-- Buyer name field -->
+		<div class="form-group">
+			<label for="buyer" class="control-label col-xs-2">Buyer</label>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" id="buyer"
+					   th:field="*{buyer}" placeholder="Buyer name"
+					   style="width: 10em;" />
+			</div>
+			<div class="col-xs-8">Buyer name</div>
+		</div>
+
+        <!-- Purchase date field -->
+        <div class="form-group">
+            <label for="purchaseDate" class="control-label col-xs-2">Buyer</label>
+            <div class="col-xs-2">
+                <input type="date" class="form-control" id="purchaseDate"
+                       th:field="*{purchaseDate}" placeholder="Purchase Date"
+                       style="width: 10em;" />
+            </div>
+            <div class="col-xs-8">Purchase date</div>
+        </div>
+
+		<!-- Account Number field -->
+		<div class="form-group">
+			<label for="number" class="control-label col-xs-2">Account
+				Number</label>
+			<div class="col-xs-2">
+				<input type="text" class="form-control" id="number"
+					th:field="*{accountNumber}" placeholder="Enter account number"
+					style="width: 10em;" />
+			</div>
+			<div class="col-xs-8">Enter a valid 9 digit number</div>
+		</div>
+
+
+
+		<!--  Submit button -->
+		<div class="form-group">
+			<div class="col-xs-offset-2 col-xs-10">
+				<button type="submit" class="btn btn-primary">Find</button>
+			</div>
+		</div>
+	</form>
+
+	<div th:replace="footer :: copy"></div>
+
+</body>
+</html>

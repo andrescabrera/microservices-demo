@@ -1,0 +1,12 @@
+{
+  "purchaseDate" : "2017-11-20",
+  "passengers" : [ "Andrew Cabrera", "Bin Cabrera" ],
+  "cardHolder" : "Andres Cabrera",
+  "creditCardNumber" : 1234432112344321,
+  "personToInvoice" : "Andres Cabrera",
+  "destination" : "Zimbaue",
+  "roundTrip" : true,
+  "travelDates" : ["2040-11-20", "2040-11-29"],
+  "amount" : 2000.07896,
+  "number" : "42c252d7-58ed-485d-9cc7-0a3cae1e122b"
+}

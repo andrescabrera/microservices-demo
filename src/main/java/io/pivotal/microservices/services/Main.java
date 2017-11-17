@@ -1,7 +1,9 @@
 package io.pivotal.microservices.services;
 
 import io.pivotal.microservices.services.accounts.AccountsServer;
+import io.pivotal.microservices.services.fraudDetection.FraudDetectionServer;
 import io.pivotal.microservices.services.registration.RegistrationServer;
+import io.pivotal.microservices.services.salesRegistration.SalesRegistrationServer;
 import io.pivotal.microservices.services.web.WebServer;
 
 /**
@@ -36,6 +38,10 @@ public class Main {
 			RegistrationServer.main(args);
 		} else if (serverName.equals("accounts")) {
 			AccountsServer.main(args);
+		} else if (serverName.equals("salesRegistration")) {
+			SalesRegistrationServer.main(args);
+		} else if (serverName.equals("fraudDetection")) {
+			FraudDetectionServer.main(args);
 		} else if (serverName.equals("web")) {
 			WebServer.main(args);
 		} else {
@@ -47,6 +53,6 @@ public class Main {
 	protected static void usage() {
 		System.out.println("Usage: java -jar ... <server-name> [server-port]");
 		System.out.println(
-				"     where server-name is 'reg', 'registration', " + "'accounts' or 'web' and server-port > 1024");
+				"     where server-name is 'reg', 'registration', " + "'accounts' or 'web' or 'salesRegistration' or 'fraudDetection' and server-port > 1024");
 	}
 }

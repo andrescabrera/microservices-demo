@@ -1,0 +1,12 @@
+{
+  "purchaseDate" : "2017-11-16",
+  "passengers" : [ "Andrew Laden", "Bin Laden" ],
+  "cardHolder" : "Andres Cabrera",
+  "creditCardNumber" : 1234432112344320,
+  "personToInvoice" : "Andres Cabrera",
+  "destination" : "Francia",
+  "roundTrip" : true,
+  "travelDates" : ["2017-11-19", "2017-11-29"],
+  "amount" : 49999.9999907896,
+  "number" : "42c252d7-58ed-485d-9cc7-0a3cae1e122c"
+}

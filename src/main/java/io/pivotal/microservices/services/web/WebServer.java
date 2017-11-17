@@ -24,6 +24,7 @@ public class WebServer {
 	 * doesn't matter.
 	 */
 	public static final String ACCOUNTS_SERVICE_URL = "http://ACCOUNTS-SERVICE";
+	public static final String SALE_REGISTRATION_SERVICE_URL = "http://SALEREGISTRATION-SERVICE";
 
 	/**
 	 * Run the application using Spring Boot and an embedded servlet engine.
@@ -60,7 +61,17 @@ public class WebServer {
 	}
 
 	/**
-	 * Create the controller, passing it the {@link WebAccountsService} to use.
+	 * The SaleRegistrationService encapsulates the interaction with the micro-service.
+	 *
+	 * @return A new service instance.
+	 */
+	@Bean
+	public WebSalesRegistrationService salesRegistrationService() {
+		return new WebSalesRegistrationService(SALE_REGISTRATION_SERVICE_URL);
+	}
+
+	/**
+	 * Create the accounts controller, passing it the {@link WebAccountsService} to use.
 	 * 
 	 * @return
 	 */
@@ -68,6 +79,14 @@ public class WebServer {
 	public WebAccountsController accountsController() {
 		return new WebAccountsController(accountsService());
 	}
+
+	/**
+	 * Create the sale registration controller, passing it the {@link WebSaleRegistrationController} to use.
+	 *
+	 * @return
+	 */
+	@Bean
+	public WebSaleRegistrationController saleRegistrationController() { return new WebSaleRegistrationController(salesRegistrationService()); }
 
 	@Bean
 	public HomeController homeController() {
